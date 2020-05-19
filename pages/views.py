@@ -26,7 +26,7 @@ def contact(request):
     else:
         form = ContactForm()
         if 'submitted' in request.GET:
-            submitted = True
+            submitted = False
     return render(request, 'pages/contact.html',
 {'form': form, 'page_list': Page.objects.all(),
 'submitted': submitted})
