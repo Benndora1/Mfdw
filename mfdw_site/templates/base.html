@@ -4,15 +4,22 @@
 <head>
      <meta charset="utf-8">
 <title>
-    {% block title%}
+    {% block title %}
         Unititled Document
-    {% endblock title%}
+    {% endblock title %}
 </title>
 <link href="{% static 'main.css' %}" rel="stylesheet"type="text/css">
 </head>
 <body>
     <div id="wrapper">
         <header id="header">
+            <span style="float: right;">
+              {% if user.is_authenticated %}
+                Hello, {{ user.username }}. <a href="{% url 'logout' %}?next=/">Log Out </a>
+                {% else %}
+                   Not logged in. <a href="{% url 'login' %}?next=/">Login</a>
+              {% endif %}
+            </span>
         
             <div id="topbanner"><img src="{% static 'top_banner.jpg' %}" width="800" height="200" alt=""/></div>
         </header>
